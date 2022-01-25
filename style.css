@@ -55,7 +55,7 @@ font-family: 'Mochiy Pop P One', sans-serif; */
 
 .botao{
     border-radius: 30%;
-    font-size: 12px;
+    font-size: 14px;
     border: none;
 }
 
@@ -64,13 +64,15 @@ font-family: 'Mochiy Pop P One', sans-serif; */
 }
 
 .footer{
-    margin-top: 0px;
+    margin-top: 30px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
 .footer p{
+    display: flex;
+    justify-content: center;
     font-family: 'Lobster', cursive;
     font-size: 20px;
 }
