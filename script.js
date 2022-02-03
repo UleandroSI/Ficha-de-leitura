@@ -1,31 +1,53 @@
+$(function Salvar()
+        {
+            let res = document.getElementById("res")
+            let titulo = document.getElementById("inputTitulo").value
+            let autor = document.getElementById("inputAutor").value
+            let publicacao =  document.getElementById("inputPublicacao").value
+            let assunto = document.getElementById("inputAssunto").value
+            let recursos =  document.getElementById("inputRecursos").value
+            let teses = document.getElementById("inputTeses").value
+            let evidencias = document.getElementById("inputEvidencias").value
+            let desconhecidos = document.getElementById("inputDesconhecidos").value
+            let contribuicao =  document.getElementById("inputContribuicao").value
+            let interpretacoes = document.getElementById("inputInterpretacoes").value
+            let problemas = document.getElementById("inputProblemas").value
+            $.ajax({
+                url: "http://localhost/cgi-bin/mysql_insert.py",
+                type: "post",
+                datatype: "html",
+                data: { titulo, autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacoes, problemas},
+                success: function(response){
+                        $("#res").html(response);
+                        console.log("Salvando dados..."); 
+                }
+            });
+        
+
+        /*
 function Salvar() {
-    let formulario = []
     let res = document.getElementById("res")
-    let titulo = document.getElementById("inputTitulo").innerHTML
-/*    titulo = titulo.innerText*/
-    formulario.push(titulo)
-    let autor = document.getElementById("inputAutor").innerText
-    formulario.push(autor)
-    let publicacao =  document.getElementById("inputPublicacao").innerText
-    formulario.push(publicacao)
-    let assunto = document.getElementById("inputAssunto").innerText
-    formulario.push(assunto)
-    let recursos =  document.getElementById("inputRecursos").innerText
-    let teses = document.getElementById("inputTeses").innerText
-    let evidencias = document.getElementById("inputEvidencias").innerText
-    let desconhecidos = document.getElementById("inputDesconhecidos").innerText
-    let contribuicao =  document.getElementById("inputContribuicao").innerText
-    let interpretacoes = document.getElementById("inputInterpretacoes").innerText
-    let problemas = document.getElementById("inputProblemas").innerText
+    let titulo = document.getElementById("inputTitulo").value
+    let autor = document.getElementById("inputAutor").value
+    let publicacao =  document.getElementById("inputPublicacao").value
+    let assunto = document.getElementById("inputAssunto").value
+    let recursos =  document.getElementById("inputRecursos").value
+    let teses = document.getElementById("inputTeses").value
+    let evidencias = document.getElementById("inputEvidencias").value
+    let desconhecidos = document.getElementById("inputDesconhecidos").value
+    let contribuicao =  document.getElementById("inputContribuicao").value
+    let interpretacoes = document.getElementById("inputInterpretacoes").value
+    let problemas = document.getElementById("inputProblemas").value
     
-    /*console.log(`${formulario}`)*/
-    /*document.getElementById("res").innerHTML = `${titulo}`*/
+    console.log(`${formulario}`)
+    document.getElementById("res").innerHTML = `${titulo}`
     console.log(`${titulo}`)
     document.getElementById("res").innerHTML += `${autor}`
     console.log(`${autor}`)
     document.getElementById("res").innerHTML += `${publicacao}`
-    Limpar()
-}
+    */
+        Limpar()
+});
 
 function Limpar() {
     

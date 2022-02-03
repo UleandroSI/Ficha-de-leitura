@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     <title>Ficha de Leitura</title>
 </head>
 <body>
@@ -15,7 +15,7 @@
       <h5 class="d-none d-print-block">Use o formulário para guardar tudo de mais importante que conseguiu colher da leitura.</h5>
     </header>
     <section class="container">
-      <form action="" class="ficha">
+      <form name="form_ficha" action="aplica_form.asp" onsubmit="return Salvar();" method="post" class="ficha">
         <ol>
           <!-- Texto como um todo -->
           <li>Texto como um todo
@@ -160,7 +160,7 @@
       </form>
     </section>
     <section class="botoes">
-      <input type="button" value="SALVAR" onclick="Salvar()" class="botao">
+      <input type="submit" value="SALVAR" class="botao">
       <input type="button" value="LIMPAR" onclick="Limpar()" class="botao">
       <input type="button" value="IMPRIMIR" onclick="Imprimir()" class="botao">
       <input type="button" value="VISUALIZAR" onclick="Visualizar()" class="botao">
