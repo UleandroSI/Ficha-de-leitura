@@ -1,4 +1,4 @@
-$(function Salvar()
+function Salvar()
         {
             let res = document.getElementById("res")
             let titulo = document.getElementById("inputTitulo").value
@@ -19,8 +19,8 @@ $(function Salvar()
                 data: { titulo, autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacoes, problemas},
                 success: function(response){
                         $("#res").html(response);
-                        console.log("Salvando dados..."); 
-                }
+                        console.log("Salvando dados...");
+                    }
             });
         
 
@@ -47,7 +47,7 @@ function Salvar() {
     document.getElementById("res").innerHTML += `${publicacao}`
     */
         Limpar()
-});
+}
 
 function Limpar() {
     
