@@ -12,12 +12,12 @@ assunto = data["assunto"]
 recursos = data["recursos"]
 teses = data["teses"]
 evidencias = data["evidencias"]
-desconhecidas = data["desconhecidas"]
+desconhecidos = data["desconhecidos"]
 contribuicao = data["contribuicao"]
 interpretacao = data["interpretacao"]
 problemas = data["problemas"]
 
-inserido = inserir(autor, publicacao, assunto, recursos, teses, evidencias, desconhecidas, contribuicao, interpretacao, problemas)
+inserido = inserir(autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacao, problemas)
 
 """ Criar tabela
 import mysql.connector
@@ -33,7 +33,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cusor()
 
 
-mycursor.execute("CREATE TABLE livros (livroID INT AUTO_INCREMENT PRIMARY KEY, autor VARCHAR(255), publicacao VARCHAR(500), assunto VARCHAR(500), recursos VARCHAR(500), teses VARCHAR(500), evidencias VARCHAR(500), desconhecidas VARCHAR(500), contribuicao LONGTEXT, interpretacao LONGTEXT, problemas LONGTEXT)")
+mycursor.execute("CREATE TABLE livros (livroID INT AUTO_INCREMENT PRIMARY KEY, titulo VARCHAR(255), autor VARCHAR(255), publicacao VARCHAR(500), assunto VARCHAR(500), recursos VARCHAR(500), teses VARCHAR(500), evidencias VARCHAR(500), desconhecidas VARCHAR(500), contribuicao LONGTEXT, interpretacao LONGTEXT, problemas LONGTEXT)")
 """
 
 """ Mostrar nome da tabela
@@ -41,8 +41,11 @@ mycursor.execute("SHOW TABLES")
 for x in mycursor:
   print(x) 
 """
+""" Altera tabela
+  ALTER TABLE livros ADD titulo VARCHAR(255) AFTER livroID
+"""
 
-def inserir(autor, publicacao, assunto, recursos, teses, evidencias, desconhecidas, contribuicao, interpretacao, problemas):
+def inserir(autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacao, problemas):
 
   autor = autor
   publicacao = publicacao
@@ -50,7 +53,7 @@ def inserir(autor, publicacao, assunto, recursos, teses, evidencias, desconhecid
   recursos recursos 
   teses = teses 
   evidencias = evidencias 
-  desconhecidas = desconhecidas 
+  desconhecidos = desconhecidos 
   contribuicao = contribuicao
   interpretacao = interpretacao 
   problemas = problemas
@@ -69,8 +72,8 @@ def inserir(autor, publicacao, assunto, recursos, teses, evidencias, desconhecid
   if mydb.is_connected():
     insert_livros_query = f"""
       INSERT INTO livros
-      (autor, publicacao, assunto, recursos, teses, evidencias, desconhecidas, contribuicao, interpretacao, problemas)
-      VALUES ('{autor}', '{publicacao}', '{assunto}', '{recursos}', '{teses}', '{evidencias}', '{desconhecidas}', '{contribuicao}', '{interpretacao}', '{problemas}')
+      (autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacao, problemas)
+      VALUES ('{autor}', '{publicacao}', '{assunto}', '{recursos}', '{teses}', '{evidencias}', '{desconhecidos}', '{contribuicao}', '{interpretacao}', '{problemas}')
       """
 
     mycursor.executemany(insert_livros_query)
