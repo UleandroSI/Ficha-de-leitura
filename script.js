@@ -50,6 +50,7 @@ function Salvar() {
 }
 
 function Limpar() {
+    document.getElementById('form_ficha').reset();
     let titulo = document.getElementById("inputTitulo").placeholder="Título do artigo ou texto. Ex: Sobre a autonomia do estudante na educação a distância."
     let autor = document.getElementById("inputAutor").placeholder="Nome e breves informações sobre quem escreveu o texto. Ex: Otto Peters, professor alemão especialista em ensino a distância."
     let publicacao =  document.getElementById("inputPublicacao").placeholder="Informações contextuais do material. Ex: artigo publicado na revista X, livro publicado pela editora Y no ano 2000."
