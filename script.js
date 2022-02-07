@@ -23,30 +23,7 @@ function Salvar()
                     }
             });
         
-
-        /*
-function Salvar() {
-    let res = document.getElementById("res")
-    let titulo = document.getElementById("inputTitulo").value
-    let autor = document.getElementById("inputAutor").value
-    let publicacao =  document.getElementById("inputPublicacao").value
-    let assunto = document.getElementById("inputAssunto").value
-    let recursos =  document.getElementById("inputRecursos").value
-    let teses = document.getElementById("inputTeses").value
-    let evidencias = document.getElementById("inputEvidencias").value
-    let desconhecidos = document.getElementById("inputDesconhecidos").value
-    let contribuicao =  document.getElementById("inputContribuicao").value
-    let interpretacoes = document.getElementById("inputInterpretacoes").value
-    let problemas = document.getElementById("inputProblemas").value
-    
-    console.log(`${formulario}`)
-    document.getElementById("res").innerHTML = `${titulo}`
-    console.log(`${titulo}`)
-    document.getElementById("res").innerHTML += `${autor}`
-    console.log(`${autor}`)
-    document.getElementById("res").innerHTML += `${publicacao}`
-    */
-    //    Limpar()
+    Limpar()
 }
 
 function Limpar() {
