@@ -1,32 +1,12 @@
 <?php
     header("Content-type: text/html; charset=utf-8");
-    //include_once("banco.php");
-    $host = "localhost:90";
-    $user = "ti";
-    $password = "zt049br";
-    $database = "livros_db";
+    include_once("banco.php");
 
-    /* Create connection
-    $conn = new mysqli($host, $user, $password, $database);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    // Teste de conexão 
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    $conn->close();
-    */
-
-    // Recebendo dados
+    // Recebendo dados do form
     $titulo = $_POST['inputTitulo'];
     $autor = $_POST['inputAutor'];
     $publicacao = $_POST['inputPublicacao'];
-    $assunto = $_POST['assunto'];
+    $assunto = $_POST['inputAssunto'];
     $recursos = $_POST['inputRecursos'];
     $teses = $_POST['inputTeses'];
     $evidencias = $_POST['inputEvidencias'];
@@ -36,7 +16,7 @@
     $problemas = $_POST['inputProblemas'];
 
     try {
-        $conn = new PDO("mysql:host=$localhost:90;dbname=$livros_db", $ti, $zt049br);
+        $conn = new PDO("mysql:host=$host;dbname=$database", $user, $password);
         // set the PDO error mode to exception
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "INSERT INTO livros (

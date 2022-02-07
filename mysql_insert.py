@@ -43,6 +43,7 @@ for x in mycursor:
 """
 """ Altera tabela
   ALTER TABLE livros ADD titulo VARCHAR(255) AFTER livroID
+  ALTER TABLE `livros` DROP `desconhecidas`;
 """
 
 def inserir(autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacao, problemas):
