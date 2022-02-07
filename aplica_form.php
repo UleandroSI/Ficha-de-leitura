@@ -1,29 +1,26 @@
 <?php
     header("Content-type: text/html; charset=utf-8");
     //include_once("banco.php");
-
     $host = "localhost:90";
     $user = "ti";
     $password = "zt049br";
     $database = "livros_db";
 
-    // Create connection
-    $conn = mysqli_connect($host, $user, $password, $database);
+    /* Create connection
+    $conn = new mysqli($host, $user, $password, $database);
     // Check connection
-    if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
-
-    $sql = "INSERT INTO livros (titulo, autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacao, problemas)
-    VALUES ('$titulo', '$autor', '$publicacao', '$assunto', '$recursos', '$teses', '$evidencias', '$desconhecidos', '$contribuicao', '$interpretacao', '$problemas')";
-    
-    if (mysqli_multi_query($conn, $sql)) {
-    echo "New records created successfully";
+    // Teste de conexão 
+    if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
     } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    mysqli_close($conn);
+    $conn->close();
+    */
 
     // Recebendo dados
     $titulo = $_POST['inputTitulo'];
@@ -33,40 +30,47 @@
     $recursos = $_POST['inputRecursos'];
     $teses = $_POST['inputTeses'];
     $evidencias = $_POST['inputEvidencias'];
-    $desconhecidos = $_POST['inputDesconhecidos']
+    $desconhecidos = $_POST['inputDesconhecidos'];
     $contribuicao = $_POST['inputContribuicao'];
     $interpretacao = $_POST['inputInterpretacao'];
     $problemas = $_POST['inputProblemas'];
 
-    /*
-    $dados = "INSERT INTO livros(
-        titulo
-        autor, 
-        publicacao, 
-        assunto, 
-        recursos, 
-        teses, 
-        evidencias, 
-        desconhecidos, 
-        contribuicao, 
-        interpretacao, 
-        problemas,
-        created)
+    try {
+        $conn = new PDO("mysql:host=$localhost:90;dbname=$livros_db", $ti, $zt049br);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "INSERT INTO livros (
+            titulo, 
+            autor, 
+            publicacao, 
+            assunto, 
+            recursos, 
+            teses, 
+            evidencias, 
+            desconhecidos, 
+            contribuicao, 
+            interpretacao, 
+            problemas)
+        VALUES (
+            '$titulo', 
+            '$autor', 
+            '$publicacao', 
+            '$assunto', 
+            '$recursos', 
+            '$teses', 
+            '$evidencias', 
+            '$desconhecidos', 
+            '$contribuicao', 
+            '$interpretacao', 
+            '$problemas')";
+    
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "New record created successfully";
+    } catch(PDOException $e) {
+        echo $sql . "<br>" . $e->getMessage();
+    }
 
-    VALUES (
-        '$titulo',
-        '$autor', 
-        '$publicacao', 
-        '$assunto', 
-        '$recursos', 
-        '$teses', 
-        '$evidencias', 
-        '$desconhecidos', 
-        '$contribuicao', 
-        '$interpretacao', 
-        '$problemas',
-        NOW()
-    )"; 
-    $salvar = mysqli_query($conn, $dados) */
+    $conn = null;    
     
 ?>
