@@ -1,19 +1,20 @@
 <?php
     header("Content-type: text/html; charset=utf-8");
+    header("Location: index.html");
     include_once("banco.php");
 
     // Recebendo dados do form
-    $titulo = $_POST['inputTitulo'];
-    $autor = $_POST['inputAutor'];
-    $publicacao = $_POST['inputPublicacao'];
-    $assunto = $_POST['inputAssunto'];
-    $recursos = $_POST['inputRecursos'];
-    $teses = $_POST['inputTeses'];
-    $evidencias = $_POST['inputEvidencias'];
-    $desconhecidos = $_POST['inputDesconhecidos'];
-    $contribuicao = $_POST['inputContribuicao'];
-    $interpretacao = $_POST['inputInterpretacao'];
-    $problemas = $_POST['inputProblemas'];
+    $titulo = addslashes($_POST['inputTitulo']);
+    $autor = addslashes($_POST['inputAutor']);
+    $publicacao = addslashes($_POST['inputPublicacao']);
+    $assunto = addslashes($_POST['inputAssunto']);
+    $recursos = addslashes($_POST['inputRecursos']);
+    $teses = addslashes($_POST['inputTeses']);
+    $evidencias = addslashes($_POST['inputEvidencias']);
+    $desconhecidos = addslashes($_POST['inputDesconhecidos']);
+    $contribuicao = addslashes($_POST['inputContribuicao']);
+    $interpretacao = addslashes($_POST['inputInterpretacao']);
+    $problemas = addslashes($_POST['inputProblemas']);
 
     try {
         $conn = new PDO("mysql:host=$host;dbname=$database", $user, $password);
