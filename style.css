@@ -76,3 +76,8 @@ font-family: 'Mochiy Pop P One', sans-serif; */
     font-family: 'Lobster', cursive;
     font-size: 20px;
 }
+
+/* tabela Visualizar */
+table, th, td {
+    border: 1px solid black;
+}
