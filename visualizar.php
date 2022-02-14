@@ -4,39 +4,26 @@ header("Content-type: text/html; charset=utf-8");
 //header("Location: index.html");
 include_once("banco.php");
 
-/* iniciando a conexão com o banco de dados 
-$cx = mysqli_connect("127.0.0.1", "root", "");
-  selecionando o banco de dados 
-$db = mysqli_select_db($cx, "test"); */
+// Create connection
+$conn = new mysqli($host, $user, $password, $database);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$database", $user, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//$sql = "SELECT id, firstname, lastname FROM MyGuests WHERE lastname='Doe'";
+$sql = "SELECT livroID, titulo FROM livros ";
+$result = $conn->query($sql);
 
-
-    //criando a query de consulta à tabela criada
-    $consulta = "SELECT * FROM livros";
-
-    //pecorrendo os registros da consulta. 
-    while($aux = mysqli_fetch_assoc($consulta)) { 
-        echo "-----------------------------------------<br />";
-        echo "ID:".$id["id"]."<br />";
-        echo "Titulo:".$aux["titulo"]."<br />";
-        echo "Autor:".$aux["autor"]."<br />";
-            //publicacao,
-            //assunto, 
-            //recursos, 
-            //teses, 
-            //evidencias, 
-            //desconhecidos, 
-            //contribuicao, 
-        echo "Interpretação:".$aux["interpretacao"]."<br />"; 
-        echo "Problemas:".$aux["problemas"]."<br />"; 
-        } catch(PDOException $e) {
-            echo $consulta . "<br>" . $e->getMessage();
-        }
-    
-        $conn = null;
- 
-?>
+if ($result->num_rows > 0) {
+  echo "<table><tr><th>ID</th><th>Name</th></tr>";
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "<tr><td>".$row["livroID"]."</td><td>".$row["titulo"]."</td></tr>";
+  }
+  echo "</table>";
+} else {
+  echo "0 results";
+}
+$conn->close();
+?> 
