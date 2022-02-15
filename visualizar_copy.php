@@ -34,7 +34,8 @@
         if ($result->num_rows > 0) {
           // output data of each row
           $row = $result->fetch_assoc()
-          echo <<<EOT <form accept-charset='utf-8' name='form_ficha' id='form_ficha' class='ficha'>
+          $form_html .= <<<EOT 
+          <form accept-charset='utf-8' name='form_ficha' id='form_ficha' class='ficha'>
           <ol>
             <li>Texto como um todo
   
@@ -187,10 +188,9 @@
           
           EOT;
 
-
         // use exec() because no results are returned
         $conn->exec($sql);
-        echo "New record created successfully";
+        echo $form_html;
         } catch(PDOException $e) {
           echo $sql . "<br>" . $e->getMessage();
           }
