@@ -79,15 +79,16 @@ font-family: 'Mochiy Pop P One', sans-serif; */
 }
 
 /* tabela Visualizar */
-.table {
+table {
+    width: 100%;
     background-color: white;
-    text-align: justify;
+    text-align: center;
 }
 
 th, td {
     border-bottom: 1px solid black;
 }
 
-table.tr:hover {
+table tr:hover {
     background-color: #5ae7e7;
 }

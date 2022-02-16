@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--link rel="icon" type="image/x-icon" href="/images/favicon.ico" -->
+    <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js"></script>
     <title>Pesquisar Livros</title>
@@ -36,10 +36,11 @@
       $result = $conn->query($sql);
       // IF tiver dados recuperados
       if ($result->num_rows > 0) {
-        echo "<table> <tr> <th>ID</th> <th>Titulo</th> <th>Autor</th> <th>Publicacao</th> <th>Assunto</th></tr>";
+        //echo "<table> <tr> <th>ID</th> <th>Titulo</th> <th>Autor</th> <th>Publicacao</th> <th>Assunto</th></tr>";
+        echo "<table> <tr> <th></th> <th>ID</th> <th>Titulo</th> <th>Autor</th> <th>Publicacao</th> <th>Assunto</th></tr>";
         // output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "<tr><td>".$row["livroID"]."</td><td>".$row["titulo"]."</td><td>".$row["autor"]."</td><td>".$row["publicacao"]."</td><td>".$row["assunto"]."</td></tr>";
+          echo "<tr><td><input type="radio" name='escolhido[' .$row['livroID'] .']' /> <td>".$row["livroID"]."</td><td>".$row["titulo"]."</td><td>".$row["autor"]."</td><td>".$row["publicacao"]."</td><td>".$row["assunto"]."</td></tr>";
         }
         echo "</table>";
       } else {
