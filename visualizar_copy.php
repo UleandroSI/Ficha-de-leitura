@@ -33,8 +33,9 @@
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
           // output data of each row
-          $row = $result->fetch_assoc()
-          $form_html .= <<<EOT 
+          $row = $result->fetch_assoc();
+          //$form_html = <<<EOT
+          echo <<<EOT
           <form accept-charset='utf-8' name='form_ficha' id='form_ficha' class='ficha'>
           <ol>
             <li>Texto como um todo
@@ -45,7 +46,7 @@
                 <div class='form-group row'>
                   <label for='inputID' class='col-lg-2 col-md-12 col-form-label'>Livro ID</label>
                   <div class='col-lg-10 flex col-md-12'>
-                    <textarea class='form-control' name='inputID' id='inputID'> .$row["livroID"]</textarea>
+                    <textarea class='form-control' name='inputID' id='inputID'> {$row->bar["livroID"]}</textarea>
                   </div>
                 </div>
               </li>
@@ -54,7 +55,7 @@
                   <div class='form-group row'>
                     <label for='inputTitulo' class='col-lg-2 col-md-12 col-form-label'>Titulo</label>
                     <div class='col-lg-10 flex col-md-12'>
-                      <textarea class='form-control' name='inputTitulo' id='inputTitulo'> .$row["titulo"]</textarea>
+                      <textarea class='form-control' name='inputTitulo' id='inputTitulo'> {$row->bar["titulo"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -64,7 +65,7 @@
                   <div class="form-group row">
                     <label for="inputAutor" class="col-lg-2 col-md-12 col-form-label">Autor</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputAutor" id="inputAutor" rows="2" placeholder="Nome e breves informações sobre quem escreveu o texto. Ex: Otto Peters, professor alemão especialista em ensino a distância." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputAutor" id="inputAutor" > {$row->bar["autor"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -74,7 +75,7 @@
                   <div class="form-group row">
                     <label for="inputPublicacao" class="col-lg-2 col-md-12 col-form-label">Publicação</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputPublicacao" id="inputPublicacao" rows="2" placeholder="Informações contextuais do material. Ex: artigo publicado na revista X, livro publicado pela editora Y no ano 2000." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputPublicacao" id="inputPublicacao"> {$row->bar["publicacao"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -84,7 +85,7 @@
                   <div class="form-group row">
                     <label for="inputAssunto" class="col-lg-2 col-md-12 col-form-label">Assunto</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputAssunto" id="inputAssunto" rows="2" placeholder="O tema principal do texto. Geralmente está no resumo, no título ou nos primeiros parágrafos. Ex: teoria cognitiva da aprendizagem multimídia." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputAssunto" id="inputAssunto"> {$row->bar["assunto"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -94,7 +95,7 @@
                   <div class="form-group row">
                     <label for="inputRecursos" class="col-lg-2 col-md-12 col-form-label">Recursos</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputRecursos" id="inputRecursos" rows="2" placeholder="Fontes de informações apresentadas pelo autor. Ex: livros e autores, documentos, experimentos, entrevistas." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputRecursos" id="inputRecursos"> recursos</textarea>
                     </div>
                   </div>
                 </li>
@@ -111,7 +112,7 @@
                   <div class="form-group row">
                     <label for="inputTeses" class="col-lg-2 col-md-12 col-form-label">Teses / Objetivos</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputTeses" id="inputTeses" rows="2" placeholder="A principal ideia apresentada/defendida pelo autor. Ex: mostrar que a educação aberta facilita a aprendizagem autônoma." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputTeses" id="inputTeses"> {$row->bar["teses"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -121,7 +122,7 @@
                   <div class="form-group row">
                     <label for="inputEvidencias" class="col-lg-2 col-md-12 col-form-label">Evidências</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputEvidencias" id="inputEvidencias" rows="2" placeholder="Como o autor chegou a essa ideia ou conclusão. Ex: dados estatísticos provenientes do Censo do IBGE." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputEvidencias" id="inputEvidencias"> {$row->bar["evidencias"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -138,7 +139,7 @@
                   <div class="form-group row">
                     <label for="inputDesconhecidos" class="col-lg-2 col-md-12 col-form-label">Palavras e conceitos desconhecidos</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputDesconhecidos" id="inputDesconhecidos" rows="2" placeholder="Anote para pesquisa posterior palavras ou conceitos que você desconhece. Ex: memória de trabalho e memória sensorial." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputDesconhecidos" id="inputDesconhecidos"> {$row->bar["desconhecidos"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -155,7 +156,7 @@
                   <div class="form-group row">
                     <label for="inputContribuicao" class="col-lg-2 col-md-12 col-form-label">Contribuição</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputContribuicao" id="inputContribuicao" rows="2" placeholder="Relações com seu contexto acadêmico/profissional. Ex: conhecer a teoria de Piaget ajuda a compreender os estágios de desenvolvimento das crianças com que trabalho." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputContribuicao" id="inputContribuicao"> contribuicao</textarea>
                     </div>
                   </div>
                 </li>
@@ -165,7 +166,7 @@
                   <div class="form-group row">
                     <label for="inputInterpretacao" class="col-lg-2 col-md-12 col-form-label">Outras interpretações</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputInterpretacao" id="inputInterpretacao" rows="2" placeholder="Relações com outras ideias, autores e conhecimentos prévios. Ex: Piaget se encaixa no construtivismo; Vygotsky, por sua vez, é socioconstrutivista porque dá mais importância às interações." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputInterpretacao" id="inputInterpretacao"> {$row->bar["interpretacao"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -175,7 +176,7 @@
                   <div class="form-group row">
                     <label for="inputProblemas" class="col-lg-2 col-md-12 col-form-label">Problemas e Limitações</label>
                     <div class="col-lg-10 flex col-md-12">
-                      <textarea class="form-control" name="inputProblemas" id="inputProblemas" rows="2" placeholder="Ressalvas (justificadas) às ideias apresentadas no texto. Ex: o estudo é interessante, mas se restringe a populações urbanas, ignorando o contexto rural." style="height: 50px;"></textarea>
+                      <textarea class="form-control" name="inputProblemas" id="inputProblemas"> {$row->bar["problemas"]}</textarea>
                     </div>
                   </div>
                 </li>
@@ -185,14 +186,14 @@
   
           </ol>
           
-          
           EOT;
+        }
 
         // use exec() because no results are returned
         $conn->exec($sql);
-        echo $form_html;
-        } catch(PDOException $e) {
-          echo $sql . "<br>" . $e->getMessage();
+        //echo $form_html;
+        } catch(PDOException $t) {
+          echo $sql . "<br>" . $t->getMessage();
           }
 
       $conn = null; 
