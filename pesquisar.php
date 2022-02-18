@@ -32,7 +32,7 @@
         die("Connection failed: " . $conn->connect_error);
       }
       // SELECT dos dados
-      $sql = "SELECT livroID, titulo, autor, publicacao, assunto FROM livros";
+      $sql = "SELECT livroID, titulo, autor, publicacao, assunto FROM livros WHERE livroID= 1";
       $result = $conn->query($sql);
       // IF tiver dados recuperados
       if ($result->num_rows > 0) {
