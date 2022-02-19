@@ -16,13 +16,16 @@
   <!-- Header-->
   <header class="header">
       <h1>Ficha de Leitura para Textos Acadêmicos</h1>
-      <h5 class="d-none d-print-block">Use o formulário para guardar tudo de mais importante que conseguiu colher da leitura.</h5>
+      <h5 class="d-none d-print-block">Visualizando Dados Referente A Livro Ja Salvo.</h5>
   </header>
 
   
     <?php
       header("Content-type: text/html; charset=utf-8");
       include_once("banco.php");
+
+      // Recebe variavel com ID da pesquisar
+      $Id = $_POST['Escolhido'] = ( isset($_POST['Escolhido']) ) ? $_POST['Escolhido'] : null;
 
       // Conecta e testa conexão
       try {
@@ -34,7 +37,7 @@
         if ($conn->connect_error) {
           die("Connection failed: " . $conn->connect_error);
           }
-        $sql = "SELECT livroID, titulo, autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacao, problemas FROM livros WHERE livroID= '1'";
+        $sql = "SELECT livroID, titulo, autor, publicacao, assunto, recursos, teses, evidencias, desconhecidos, contribuicao, interpretacao, problemas FROM livros WHERE livroID= '$Id'";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {

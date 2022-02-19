@@ -2,7 +2,7 @@
     
     $host = "localhost";
     $user = "ti";
-    $password = "zt049br";
+    $password = "ti2022br";
     $database = "livros_db";
     
 ?>

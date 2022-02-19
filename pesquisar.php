@@ -3,8 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Armazenar leituras feitas para consulta posterior.">
+    <meta name="keywords" content="leitura, livro, livros, compreenção de texto, textos">
+    <meta name="author" content="uLeandroSP">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="author" href="https://github.com/UleandroSI/Ficha-de-leitura">
+    <link rel="license" href="MIT License">
     <link rel="icon" type="image/x-icon" href="/Images/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="script.js"></script>
@@ -44,7 +49,7 @@
       
         while($row = $result->fetch_assoc()) {
           $retorno_banco .= '<tr>';
-          $retorno_banco .= '<td> <input type="radio" value='.$row["livroID"].' name="Escolhido" id='.$row["livroID"].' checked> </td> <td>'.$row["livroID"].'</td> <td>'.$row["titulo"].'</td> <td>'.$row["autor"].'</td> <td>'.$row["publicacao"].'</td> <td>'.$row["assunto"].'</td>';
+          $retorno_banco .= '<td> <input type="radio" value='.$row["livroID"].' name="Escolhido" id='.$row["livroID"].'> </td> <td>'.$row["livroID"].'</td> <td>'.$row["titulo"].'</td> <td>'.$row["autor"].'</td> <td>'.$row["publicacao"].'</td> <td>'.$row["assunto"].'</td>';
           $retorno_banco .= '</tr>';
         }
         //echo "</table>";
@@ -63,7 +68,6 @@
     <section class="botoes">
       <input type="button" value="HOME" onclick="javascript: location.href='index.html'" class="botao">
       <input type="button" value="IMPRIMIR" onclick="Imprimir()" class="botao">
-      <input type="button" value="VISUALIZAR" onclick="javascript: location.href='visualizar.php';" class="botao">
       <input type="submit" value="VISUALIZAR" class="botao">
     </section>
 
