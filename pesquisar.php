@@ -32,17 +32,25 @@
         die("Connection failed: " . $conn->connect_error);
       }
       // SELECT dos dados
-      $sql = "SELECT livroID, titulo, autor, publicacao, assunto FROM livros WHERE livroID= 1";
+      $sql = "SELECT livroID, titulo, autor, publicacao, assunto FROM livros";
       $result = $conn->query($sql);
       // IF tiver dados recuperados
       if ($result->num_rows > 0) {
-        //echo "<table> <tr> <th>ID</th> <th>Titulo</th> <th>Autor</th> <th>Publicacao</th> <th>Assunto</th></tr>";
-        echo "<table> <tr> <th></th> <th>ID</th> <th>Titulo</th> <th>Autor</th> <th>Publicacao</th> <th>Assunto</th></tr>";
+    ?>
+        <form accept-charset="utf-8" name="form_pesquisar" id="form_pesquisar" action="visualizar.php" method="POST">
+    <?php
+        $retorno_banco= "<table> <tr> <th> </th> <th>ID</th> <th>Titulo</th> <th>Autor</th> <th>Publicacao</th> <th>Assunto</th></tr>";
         // output data of each row
+      
         while($row = $result->fetch_assoc()) {
-          echo "<tr><td><input type="radio" name='escolhido[' .$row['livroID'] .']' /> <td>".$row["livroID"]."</td><td>".$row["titulo"]."</td><td>".$row["autor"]."</td><td>".$row["publicacao"]."</td><td>".$row["assunto"]."</td></tr>";
+          $retorno_banco .= '<tr>';
+          $retorno_banco .= '<td> <input type="radio" value='.$row["livroID"].' name="Escolhido" id='.$row["livroID"].' checked> </td> <td>'.$row["livroID"].'</td> <td>'.$row["titulo"].'</td> <td>'.$row["autor"].'</td> <td>'.$row["publicacao"].'</td> <td>'.$row["assunto"].'</td>';
+          $retorno_banco .= '</tr>';
         }
-        echo "</table>";
+        //echo "</table>";
+        $retorno_banco .= "</table>";
+        echo "$retorno_banco";
+
       } else {
         echo "0 results";
       }
@@ -56,7 +64,11 @@
       <input type="button" value="HOME" onclick="javascript: location.href='index.html'" class="botao">
       <input type="button" value="IMPRIMIR" onclick="Imprimir()" class="botao">
       <input type="button" value="VISUALIZAR" onclick="javascript: location.href='visualizar.php';" class="botao">
+      <input type="submit" value="VISUALIZAR" class="botao">
     </section>
+
+
+      </form>
 
   <!-- Footer-->
   <footer class="footer">
@@ -74,3 +86,4 @@
   </main>
 </body>
 </html>
+
