@@ -1,8 +1,8 @@
 <?php
     
     $host = "localhost";
-    $user = "ti";
-    $password = "ti2022br";
+    $user = "root";
+    $password = "";
     $database = "livros_db";
     
 ?>
